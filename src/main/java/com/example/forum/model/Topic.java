@@ -4,20 +4,20 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Topico {
+public class Topic {
 
 	private Long id;
-	private String titulo;
-	private String mensagem;
-	private LocalDateTime dataCriacao = LocalDateTime.now();
+	private String title;
+	private String message;
+	private LocalDateTime creationDate = LocalDateTime.now();
 	private TopicSatus status = TopicSatus.NOT_ANSWERED;
-	private User autor;
+	private User author;
 	private Course course;
 	private List<Answer> answers = new ArrayList<>();
 
-	public Topico(String titulo, String mensagem, Course course) {
-		this.titulo = titulo;
-		this.mensagem = mensagem;
+	public Topic(String title, String message, Course course) {
+		this.title = title;
+		this.message = message;
 		this.course = course;
 	}
 
@@ -37,7 +37,7 @@ public class Topico {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Topico other = (Topico) obj;
+		Topic other = (Topic) obj;
 		if (id == null) {
 			return other.id == null;
 		} else return id.equals(other.id);
@@ -51,28 +51,28 @@ public class Topico {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getMensagem() {
-		return mensagem;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	public LocalDateTime getCreationDate() {
+		return creationDate;
 	}
 
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	public void setCreationDate(LocalDateTime creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public TopicSatus getStatus() {
@@ -83,12 +83,12 @@ public class Topico {
 		this.status = status;
 	}
 
-	public User getAutor() {
-		return autor;
+	public User getAuthor() {
+		return author;
 	}
 
-	public void setAutor(User autor) {
-		this.autor = autor;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 
 	public Course getCurso() {
