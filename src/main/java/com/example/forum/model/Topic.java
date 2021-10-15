@@ -4,23 +4,33 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Topic {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+
+@Entity
+public class Topic {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String message;
 	private LocalDateTime creationDate = LocalDateTime.now();
+	@Enumerated(EnumType.STRING)
 	private TopicSatus status = TopicSatus.NOT_ANSWERED;
+	@ManyToOne
 	private User author;
+	@ManyToOne
 	private Course course;
+	@OneToMany(mappedBy = "topic")
 	private List<Answer> answers = new ArrayList<>();
-
-	public Topic(String title, String message, Course course) {
-		this.id = 0L;
-		this.title = title;
-		this.message = message;
-		this.course = course;
-	}
+	
 
 	@Override
 	public int hashCode() {
