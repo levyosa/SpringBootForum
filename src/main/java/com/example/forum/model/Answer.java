@@ -6,7 +6,7 @@ public class Answer {
 
 	private Long id;
 	private String message;
-	private Topico topic;
+	private Topic topic;
 	private LocalDateTime creationDate = LocalDateTime.now();
 	private User author;
 	private Boolean solution = false;
@@ -49,11 +49,11 @@ public class Answer {
 		this.message = message;
 	}
 
-	public Topico getTopic() {
+	public Topic getTopic() {
 		return topic;
 	}
 
-	public void setTopic(Topico topic) {
+	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
 
