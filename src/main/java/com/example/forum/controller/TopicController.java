@@ -1,6 +1,9 @@
 package com.example.forum.controller;
 import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import com.example.forum.repository.TopicRepository;
 import com.example.forum.controller.dto.TopicDTO;
 import com.example.forum.controller.form.TopicForm;
@@ -32,7 +35,7 @@ public class TopicController {
     }
 
     @PostMapping
-    public ResponseEntity<TopicDTO> create(@RequestBody TopicForm topicForm, UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<TopicDTO> create(@RequestBody @Valid TopicForm topicForm, UriComponentsBuilder uriComponentsBuilder){
         Topic topic = topicForm.convert(courseRepository);
         topicRepository.save(topic);
 
