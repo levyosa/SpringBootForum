@@ -12,6 +12,7 @@ import com.example.forum.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,14 @@ public class TopicController {
         URI uri = uriComponentsBuilder.path("/topics/{id}").buildAndExpand(topic.getId()).toUri();
         return ResponseEntity.created(uri).body(new TopicDTO(topic));
     }
+
+    @GetMapping("/{id}")
+    public TopicDTO retrieve(@PathVariable Long id){
+        Topic topic = topicRepository.getById(id);
+        return TopicDTO.convert(topic);
+    }
+
+
 
 
 

@@ -19,9 +19,21 @@ public class TopicDTO {
         this.creationDate = topic.getCreationDate();
 
     }
+    public TopicDTO(){
+
+    }
 
     public static List<TopicDTO> convert(List<Topic> topics) {
         return topics.stream().map(TopicDTO::new).collect(Collectors.toList());
+    }
+
+    public static TopicDTO convert(Topic topic) {
+        TopicDTO topicDTO = new TopicDTO();
+        topicDTO.id = topic.getId();
+        topicDTO.message = topic.getMessage();
+        topicDTO.title = topic.getTitle();
+        topicDTO.creationDate = topic.getCreationDate();
+        return topicDTO;
     }
 
     public long getId() {
