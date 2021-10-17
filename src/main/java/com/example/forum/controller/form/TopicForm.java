@@ -1,5 +1,6 @@
 package com.example.forum.controller.form;
 
+import com.example.forum.model.Course;
 import com.example.forum.model.Topic;
 import com.example.forum.repository.CourseRepository;
 
@@ -34,8 +35,8 @@ public class TopicForm {
 
     public Topic convert(CourseRepository courseRepository) {
 
-
-        return new Topic(this.title,this.message,courseRepository.findByName(this.courseName));
+        Course course = courseRepository.findByName(this.courseName);
+        return new Topic(this.title,this.message,course);
 
     }
 }
