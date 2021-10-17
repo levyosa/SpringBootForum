@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TopicController {
 
     @RequestMapping("/topics")
-    public List<TopicDTO> lista (String courseName){
+    public List<TopicDTO> lista (){
         List<Topic> topics = topicRepository.findAll();
         return TopicDTO.convert(topics);
 
