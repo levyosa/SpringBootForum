@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.example.forum.controller.dto.DetailedTopicDTO;
+import com.example.forum.controller.form.UpdateTopicForm;
 import com.example.forum.repository.TopicRepository;
 import com.example.forum.controller.dto.TopicDTO;
 import com.example.forum.controller.form.TopicForm;
@@ -11,9 +13,11 @@ import com.example.forum.model.Topic;
 import com.example.forum.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,10 +49,19 @@ public class TopicController {
     }
 
     @GetMapping("/{id}")
-    public TopicDTO retrieve(@PathVariable Long id){
+    public DetailedTopicDTO retrieve(@PathVariable Long id){
         Topic topic = topicRepository.getById(id);
-        return TopicDTO.convert(topic);
+        return new DetailedTopicDTO(topic);
     }
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<TopicDTO> update(@PathVariable Long id,@RequestBody UpdateTopicForm form){
+        Topic topic = form.update(id,topicRepository);
+        return ResponseEntity.ok(new TopicDTO(topic));
+
+    }
+
+
 
 
 

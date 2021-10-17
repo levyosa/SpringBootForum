@@ -122,7 +122,7 @@ public class Topic {
 		this.course = course;
 	}
 
-	public List<Answer> getRespostas() {
+	public List<Answer> getAnswers() {
 		return answers;
 	}
 
